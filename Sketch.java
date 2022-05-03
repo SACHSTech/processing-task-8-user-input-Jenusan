@@ -1,10 +1,10 @@
 import org.w3c.dom.Text;
-
 import processing.core.PApplet;
 import processing.core.PImage;
 
 
 public class Sketch extends PApplet {
+  
 	
   /**
    * Called once at the beginning of execution, put your size all in this method
@@ -27,7 +27,7 @@ public class Sketch extends PApplet {
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() { 
-    }
+  }
 
     public void mouseClicked() {
       fill(153, 153, 153);
@@ -41,10 +41,10 @@ public class Sketch extends PApplet {
     }
 
 
-    //public void mouseMoved() {
-    //fill(0);
-    //ellipse(mouseX,mouseY,3,3);
-    //}
+    public void mouseMoved() {
+      fill(0,153,0); 
+      rect(0,700,800,100);
+    }
 
     public void mouseDragged(){
       PImage birds = loadImage("birds.png");
@@ -79,7 +79,6 @@ public class Sketch extends PApplet {
     ellipse(mouseX , mouseY - 25,50,50);
     }
 
-
     public void keyReleased(){
       textSize(100);
       fill(0);
@@ -93,11 +92,11 @@ public class Sketch extends PApplet {
       kanye.resize(200,200);
 
       if (keyCode == ENTER){
-        image(kanye, random(0,800), random(0,800));
+        image(kanye, random(-50,750), random(-20,780));
       }
 
       if (key == 'y'){
-        image(ye, random(0,800), 700);
+        image(ye, random(-10,800), 700);
       }
     }
 }
