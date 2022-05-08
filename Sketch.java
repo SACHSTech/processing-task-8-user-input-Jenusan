@@ -4,8 +4,16 @@ import processing.core.PImage;
 
 
 public class Sketch extends PApplet {
-  
-	
+
+  // initializing variables to be used for multiple keys moving circle 
+  boolean upPressed = false;
+  boolean downPressed = false;
+  boolean leftPressed = false;
+  boolean rightPressed = false;
+
+  float circleX = 200;
+  float circleY = 200;
+
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -20,6 +28,7 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(31, 153, 255);
+    size(800, 800);
 
   }
 
@@ -27,9 +36,31 @@ public class Sketch extends PApplet {
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() { 
+    // checks if a key is pressed, and if so will apply approriate movements to dot on screen based on what key is pressed 
+    if (keyPressed){
+  if (upPressed) {
+    circleY--;
   }
-
+  
+  if (downPressed) {
+    circleY++;
+  }
+  
+  if (leftPressed) {
+    circleX--;
+  }
+  
+  if (rightPressed) {
+    circleX++;
+  }
+  
+  // prints circle using given values 
+  ellipse(circleX, circleY, 10, 10);
+}
+  }
+    // method call for when the mouse is cliked 
     public void mouseClicked() {
+      // creates building at point of where mouse is lcoked on screen 
       fill(153, 153, 153);
       rect(mouseX, mouseY, 150, 800);
 
@@ -40,32 +71,42 @@ public class Sketch extends PApplet {
       }
     }
 
-
+    // method call for when the mouse is moved
     public void mouseMoved() {
+      // replaces the grass on lower part of sceen each time the mouse is moved 
       fill(0,153,0); 
       rect(0,700,800,100);
     }
 
+    // method call for when the mouse is dragged
     public void mouseDragged(){
+      // places birds on screen at location of mouse on screen whenever mouse is dragged 
       PImage birds = loadImage("birds.png");
       birds.resize(100,100);
       image(birds, mouseX, mouseY);
     }
 
+    // method call for when the mouse is pressed
     public void mousePressed(){
+      // if mouse is pressed an image of a cloud will be randomly produced on the screen 
       if (mousePressed){
       PImage cloud = loadImage("cloud.png");
       cloud.resize(50,50);
       image(cloud, random(0,800), random(0,200));
       }
     }
+
+    // method call for when the mouse is released 
     public void mouseReleased(){
+      // image of cloud is randomly produced on screen if mouse is released 
       PImage cloud2 = loadImage("cloud 2.png");
       cloud2.resize(50,50);
       image(cloud2, random(0,800), random(0,200));
     }
 
+    // method call for when the mouse wheel is used 
     public void mouseWheel(){
+      // creates a tree using shapes on the screen at loation of mouse 
     fill(153,102,0);
     rect(mouseX - 10, mouseY - 10, 20, 800);
 
@@ -79,22 +120,56 @@ public class Sketch extends PApplet {
     ellipse(mouseX , mouseY - 25,50,50);
     }
 
+    // method call for when a key is released 
     public void keyReleased(){
+
+      // changes values of booleans to false whenever certain keys are released 
+      if (keyCode == UP) {
+        upPressed = false;
+      }
+      else if (keyCode == DOWN) {
+        downPressed = false;
+      }
+      else if (keyCode == LEFT) {
+        leftPressed = false;
+      }
+      else if (keyCode == RIGHT) {
+        rightPressed = false;
+      }
+
+      // prints kanyeville onto top of screen 
       textSize(100);
       fill(0);
       text("KANYEVILLE", 100, 100);
     }
 
     public void keyPressed(){
+      // changes values of booleans to true whenever certain keys are pressed 
+      if (keyCode == UP) {
+        upPressed = true;
+      }
+      else if (keyCode == DOWN) {
+        downPressed = true;
+      }
+      else if (keyCode == LEFT) {
+        leftPressed = true;
+      }
+      else if (keyCode == RIGHT) {
+        rightPressed = true;
+      }
+
+      // loads images to be printed 
       PImage ye = loadImage("ye.png");
       ye.resize(100,100);
       PImage kanye = loadImage("kanye.png");
       kanye.resize(200,200);
 
+      // prints kanye face randomly on screen 
       if (keyCode == ENTER){
         image(kanye, random(-50,750), random(-20,780));
       }
 
+      // prints TLOP kanye on bottom of screen 
       if (key == 'y'){
         image(ye, random(-10,800), 700);
       }
