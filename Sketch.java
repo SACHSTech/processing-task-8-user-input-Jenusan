@@ -14,12 +14,32 @@ public class Sketch extends PApplet {
   float circleX = 200;
   float circleY = 200;
 
+  PImage birds;
+  PImage cloud;
+  PImage cloud2;
+  PImage kanye;
+  PImage ye;
+
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
   public void settings() {
 	// put your size call here
     size(800, 800);
+    birds = loadImage("birds.png");
+    birds.resize(100,100);
+
+    cloud = loadImage("cloud.png");
+    cloud.resize(50,50);
+
+    cloud2 = loadImage("cloud 2.png");
+    cloud2.resize(50,50);
+
+    ye = loadImage("ye.png");
+    ye.resize(100,100);
+
+    kanye = loadImage("kanye.png");
+    kanye.resize(200,200);
   }
 
   /** 
@@ -81,8 +101,6 @@ public class Sketch extends PApplet {
     // method call for when the mouse is dragged
     public void mouseDragged(){
       // places birds on screen at location of mouse on screen whenever mouse is dragged 
-      PImage birds = loadImage("birds.png");
-      birds.resize(100,100);
       image(birds, mouseX, mouseY);
     }
 
@@ -90,8 +108,6 @@ public class Sketch extends PApplet {
     public void mousePressed(){
       // if mouse is pressed an image of a cloud will be randomly produced on the screen 
       if (mousePressed){
-      PImage cloud = loadImage("cloud.png");
-      cloud.resize(50,50);
       image(cloud, random(0,800), random(0,200));
       }
     }
@@ -99,8 +115,6 @@ public class Sketch extends PApplet {
     // method call for when the mouse is released 
     public void mouseReleased(){
       // image of cloud is randomly produced on screen if mouse is released 
-      PImage cloud2 = loadImage("cloud 2.png");
-      cloud2.resize(50,50);
       image(cloud2, random(0,800), random(0,200));
     }
 
@@ -159,10 +173,6 @@ public class Sketch extends PApplet {
       }
 
       // loads images to be printed 
-      PImage ye = loadImage("ye.png");
-      ye.resize(100,100);
-      PImage kanye = loadImage("kanye.png");
-      kanye.resize(200,200);
 
       // prints kanye face randomly on screen 
       if (keyCode == ENTER){
