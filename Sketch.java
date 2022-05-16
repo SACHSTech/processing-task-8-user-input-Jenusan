@@ -2,6 +2,11 @@ import org.w3c.dom.Text;
 import processing.core.PApplet;
 import processing.core.PImage;
 
+/**
+ *  a code to display certain images around the screen based on a users input on the screen 
+ * @author: jenusan y
+ *
+ */
 
 public class Sketch extends PApplet {
 
